@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:wv0601/blocs/loading/loading_cubit.dart';
 
+import '../blocs/loading/loading_cubit.dart';
 import '../blocs/histories/histories_bloc.dart';
 import '../utils/string_util.dart';
 import '../components/drawer.dart';
@@ -106,7 +106,7 @@ class _WebView extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      drawer: const CustomDrawer(),
+      // drawer: const CustomDrawer(),
       appBar: _HomeAppBar(
         webViewController: _webViewController,
         height: MediaQuery.of(context).size.height * 0.1,
@@ -168,7 +168,7 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: BlocBuilder<HistoriesBloc, HistoriesState>(
         builder: (context, state) {
           return AppBar(
-            title: const Text('Wiki'),
+            title: const Text('Wikipedia'),
             actions: [
               IconButton(
                 onPressed: () async => _showMyDialog(context, state: state),

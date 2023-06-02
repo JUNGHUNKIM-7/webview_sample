@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'inh.dart';
 import 'global_configs.dart';
-import 'blocs/histories/histories_bloc.dart';
-import 'blocs/loading/loading_cubit.dart';
+import 'inh.dart';
 import 'pages/home.dart';
 import 'utils/local_storage.dart';
 
@@ -57,7 +54,6 @@ class MyApp extends StatelessWidget {
     appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(
         color: Colors.black87,
-        letterSpacing: 0.1,
         fontSize: 24,
         fontWeight: FontWeight.bold,
       ),
@@ -66,27 +62,4 @@ class MyApp extends StatelessWidget {
     colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
     useMaterial3: true,
   );
-}
-
-class BlocProviderMain extends StatelessWidget {
-  const BlocProviderMain({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<HistoriesBloc>(
-          create: (context) => HistoriesBloc(),
-        ),
-        BlocProvider<LoadingCubit>(
-          create: (context) => LoadingCubit(),
-        ),
-      ],
-      child: child,
-    );
-  }
 }
